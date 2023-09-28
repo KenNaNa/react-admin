@@ -1,5 +1,6 @@
 // webpack 公共配置文件
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // 打包入口
   entry: path.join(__dirname, '../src/index.tsx'),
@@ -30,4 +31,11 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../public/index.html'),
+      inject: true, // 自动注入静态资源
+    }),
+  ],
 };
