@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.css$/, //匹配 css 文件
-        use: ['style-loader', 'css-loader', 'less-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
       },
     ],
   },
