@@ -37,5 +37,9 @@ module.exports = {
       template: path.resolve(__dirname, '../public/index.html'),
       inject: true, // 自动注入静态资源
     }),
+
+    new webpack.DefinePlugin({
+      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
+    }),
   ],
 };
