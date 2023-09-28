@@ -17,6 +17,10 @@ module.exports = {
     extensions: ['.js', '.tsx', '.ts'],
   },
 
+  cache: {
+    type: 'filesystem', // 使用文件缓存
+  },
+
   module: {
     rules: [
       {
