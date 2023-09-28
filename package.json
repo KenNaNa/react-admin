@@ -30,6 +30,7 @@
     "postcss-loader": "^7.3.3",
     "@babel/preset-env": "^7.22.20",
     "core-js": "^3.32.2",
-    "@babel/plugin-proposal-decorators": "^7.23.0"
+    "@babel/plugin-proposal-decorators": "^7.23.0",
+    "copy-webpack-plugin": "^11.0.0"
   }
 }
