@@ -9,3 +9,5 @@ declare module '*.less';
 declare module '*.css';
 
 declare module 'react';
+
+declare module 'react-dom/client';
