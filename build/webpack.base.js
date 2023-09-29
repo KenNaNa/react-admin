@@ -1,6 +1,8 @@
 // webpack 公共配置文件
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const isDev = process.env.NODE_ENV === 'development'; // 是否是开发模式
 module.exports = {
   // 打包入口
   entry: path.join(__dirname, '../src/index.tsx'),
@@ -36,7 +38,12 @@ module.exports = {
       {
         include: [path.resolve(__dirname, '../src')],
         test: /\.css$/, //匹配 css 文件
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+        use: [
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css,
+          'css-loader',
+          'postcss-loader',
+          'less-loader',
+        ],
       },
 
       {

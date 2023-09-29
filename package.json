@@ -35,6 +35,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "thread-loader": "^4.0.2",
-    "webpack-bundle-analyzer": "^4.9.1"
+    "webpack-bundle-analyzer": "^4.9.1",
+    "mini-css-extract-plugin": "^2.7.6"
   }
 }
