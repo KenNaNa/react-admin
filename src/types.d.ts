@@ -12,3 +12,5 @@ declare module '*.tsx';
 declare module 'react';
 
 declare module 'react-dom/client';
+
+declare module 'reset-css';
