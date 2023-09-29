@@ -13,6 +13,10 @@ module.exports = {
     publicPath: '/', // 打包后文件的公共前缀路径
   },
 
+  alias: {
+    '@': path.join(__dirname, '../src'),
+  },
+
   resolve: {
     extensions: ['.js', '.tsx', '.ts'],
   },
