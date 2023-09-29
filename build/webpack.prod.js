@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = merge(baseConfig, {
   mode: 'production', // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
   // devtool: '', // 不用配置devtool此项
@@ -25,4 +26,10 @@ module.exports = merge(baseConfig, {
       filename: 'static/css/[name].css', // 抽离css的输出目录和名称
     }),
   ],
+
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(), // 压缩css
+    ],
+  },
 });

@@ -36,6 +36,7 @@
     "speed-measure-webpack-plugin": "^1.5.0",
     "thread-loader": "^4.0.2",
     "webpack-bundle-analyzer": "^4.9.1",
-    "mini-css-extract-plugin": "^2.7.6"
+    "mini-css-extract-plugin": "^2.7.6",
+    "css-minimizer-webpack-plugin": "^5.0.1"
   }
 }
