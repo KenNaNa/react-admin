@@ -33,6 +33,7 @@
     "core-js": "^3.32.2",
     "@babel/plugin-proposal-decorators": "^7.23.0",
     "copy-webpack-plugin": "^11.0.0",
-    "speed-measure-webpack-plugin": "^1.5.0"
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "thread-loader": "^4.0.2"
   }
 }

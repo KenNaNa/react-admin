@@ -25,9 +25,7 @@ module.exports = {
     rules: [
       {
         test: /.(ts|tsx)$/, // 匹配.ts,tsx文件
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['thread-loader', 'babel-loader'],
       },
       {
         test: /\.css$/, //匹配 css 文件
