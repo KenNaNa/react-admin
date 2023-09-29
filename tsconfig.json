@@ -16,6 +16,7 @@
     "jsx": "react", // react18这里也可以改成react-jsx
     // 开启装饰器使用
     "experimentalDecorators": true,
+    "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
