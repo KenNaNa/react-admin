@@ -4,6 +4,7 @@ const baseConfig = require('./webpack.base.js');
 const CopyPlugin = require('copy-webpack-plugin');
 module.exports = merge(baseConfig, {
   mode: 'production', // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
+  // devtool: '', // 不用配置devtool此项
   plugins: [
     // 复制文件插件
     new CopyPlugin({
