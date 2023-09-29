@@ -22,7 +22,7 @@ const MainApp = () => {
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <Logo />
+        <Logo width={!collapsed ? 85 : 50} />
         <Menu
           theme="dark"
           mode="inline"

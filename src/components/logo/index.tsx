@@ -1,10 +1,15 @@
 import React from 'react';
 import { Image } from 'antd';
+import './index.css';
 const logoSrc =
-  'https://stackblitz.com/files/stackblitz-starters-fcc2gf/github/KenNaNa/react-admin/admin/src/assets/logo.png';
+  'https://github.com/toomejs/toome/blob/main/src/assets/images/logo.png?raw=true';
 
-const Logo: React.FC = () => {
-  return <Image width={200} src={logoSrc} />;
+const Logo: React.FC = ({ width }: { width: number }) => {
+  return (
+    <div className="logo">
+      <Image preview={false} width={width} src={logoSrc} />
+    </div>
+  );
 };
 
 export default Logo;
