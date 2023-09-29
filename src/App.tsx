@@ -1,6 +1,7 @@
 import React from 'react';
 import './app.less';
+import MainApp from '@/components/layout/index';
 function App() {
-  return <h2>webpack5-react-ts</h2>;
+  return MainApp;
 }
 export default App;
