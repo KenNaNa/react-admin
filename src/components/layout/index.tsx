@@ -12,7 +12,7 @@ import { Outlet } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 
-const MainApp: React.FC = () => {
+const MainApp = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
