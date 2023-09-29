@@ -9,6 +9,7 @@ import {
 import { Layout, Menu, Button, theme } from 'antd';
 
 import { Outlet } from 'react-router-dom';
+import Logo from '../logo';
 
 const { Header, Sider, Content } = Layout;
 
@@ -21,7 +22,7 @@ const MainApp = () => {
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <Logo />
         <Menu
           theme="dark"
           mode="inline"
