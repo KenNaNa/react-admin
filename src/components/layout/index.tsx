@@ -61,8 +61,7 @@ const MainApp = () => {
         </Header>
         <Content
           style={{
-            margin: '24px 16px',
-            padding: 24,
+            margin: '20px 10px',
             minHeight: 280,
             background: colorBgContainer,
           }}
