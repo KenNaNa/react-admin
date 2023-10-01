@@ -17,9 +17,10 @@
     // 开启装饰器使用
     "experimentalDecorators": true,
     "noImplicitAny": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "~/*": ["./*"]
     }
   },
   "include": ["./src"]
