@@ -2,7 +2,7 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const baseConfig = require("./webpack.base.js");
-// require("../mock/index"); // 引入上面定义的 mock.js 文件
+
 module.exports = merge(baseConfig, {
   mode: "development", // 开发模式,打包更加快速,省了代码优化步骤
   devtool: "eval-cheap-module-source-map", // 源码调试模式,后面会讲
