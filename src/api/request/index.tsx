@@ -1,6 +1,6 @@
+import React from 'react';
 import { message } from 'antd';
 import axios from 'axios';
-const [messageApi, _] = message.useMessage();
 
 const axiosInstance = axios.create({
   baseURL: '/api', // 替换为你的API基本URL
@@ -36,34 +36,22 @@ axiosInstance.interceptors.response.use(
         case 400:
           // 处理400错误
           console.error('Bad Request', data);
-          messageApi.open({
-            type: 'error',
-            content: 'Bad Request',
-          });
+          message.error('Bad Request');
           break;
         case 403:
           // 处理403错误
           console.error('Forbidden', data);
-          messageApi.open({
-            type: 'error',
-            content: 'Forbidden',
-          });
+          message.error('Forbidden');
           break;
         case 404:
           // 处理404错误
           console.error('Not Found', data);
-          messageApi.open({
-            type: 'error',
-            content: 'Not Found',
-          });
+          message.error('Not Found');
           break;
         case 500:
           // 处理500错误
           console.error('Internal Server Error', data);
-          messageApi.open({
-            type: 'error',
-            content: 'Internal Server Error',
-          });
+          message.error('Internal Server Error');
           break;
         default:
           // 处理其他HTTP错误

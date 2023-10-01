@@ -5,15 +5,9 @@ import { Layout, Menu, Button, theme } from 'antd';
 import { Outlet } from 'react-router-dom';
 import Logo from '../logo';
 import DynamicMenu from '../../router';
-// import { getList } from '../../api/modules/list';
+import { getList } from '../../api/modules/list';
 
 const { Header, Sider, Content } = Layout;
-
-// useEffect(() => {
-//   getList().then((res) => {
-//     console.log('res===>', res);
-//   });
-// }, []);
 
 const menuData = [
   {
@@ -64,6 +58,12 @@ const MainApp = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  useEffect(() => {
+    getList().then((res) => {
+      console.log('res===>', res);
+    });
+  }, []);
 
   //   <Menu
   //   theme="dark"

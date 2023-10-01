@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import MainApp from './App';
+import '../mock/index'
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
