@@ -14,3 +14,5 @@ declare module 'react';
 declare module 'react-dom/client';
 
 declare module 'reset-css';
+
+declare module 'mockjs';

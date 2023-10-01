@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -11,8 +11,15 @@ import { Layout, Menu, Button, theme } from 'antd';
 import { Outlet } from 'react-router-dom';
 import Logo from '../logo';
 import DynamicMenu from '../../router';
+import { getList } from '../../api/modules/list';
 
 const { Header, Sider, Content } = Layout;
+
+useEffect(() => {
+  getList().then((res) => {
+    console.log('res===>', res);
+  });
+}, []);
 
 const menuData = [
   {

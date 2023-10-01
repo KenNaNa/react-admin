@@ -44,6 +44,7 @@
     "webpack-bundle-analyzer": "^4.9.1",
     "mini-css-extract-plugin": "^2.7.6",
     "css-minimizer-webpack-plugin": "^5.0.1",
-    "terser-webpack-plugin": "^5.3.9"
+    "terser-webpack-plugin": "^5.3.9",
+    "mockjs": "^1.1.0"
   }
 }
