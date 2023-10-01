@@ -1,7 +1,7 @@
 import axiosInstance from '@/api/axios';
 
 const getList = () => {
-  return request.get('api/posts');
+  return axiosInstance.get('api/posts');
 };
 
 export { getList };
