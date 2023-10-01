@@ -15,10 +15,6 @@ module.exports = {
     publicPath: '/', // 打包后文件的公共前缀路径
   },
 
-  alias: {
-    '@': path.join(__dirname, '../src'),
-  },
-
   resolve: {
     extensions: ['.js', '.tsx', '.ts'],
     modules: [path.resolve(__dirname, '../node_modules')], // 查找第三方模块只在本项目的node_modules中查找
