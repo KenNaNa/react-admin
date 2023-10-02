@@ -1,57 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, Suspense } from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
-
-import { Outlet } from 'react-router-dom';
+import { Layout, Button, theme } from 'antd';
+import { getMenu } from '@/api/module/user/menu';
 import Logo from '../logo';
-import DynamicMenu from '../../router';
-import { getList } from '../../api/module/user/list';
+import DynamicMenu from '../sider';
+import DynamicRoutes from '@/router/dynamic.router';
+import { Routes, Route, Navigate } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
-
-const menuData = [
-  {
-    menuId: '2000000000000001',
-    name: 'Json工具',
-    component: '/home',
-    redirect: '',
-    alwaysShow: true,
-    hidden: false,
-    children: [
-      {
-        menuId: '2210574586898432',
-        name: 'Json校验格式化工具',
-        component: '/home/home',
-        redirect: '',
-        alwaysShow: true,
-        hidden: false,
-        meta: {
-          title: 'Json校验格式化工具',
-          icon: '',
-          roles: null,
-        },
-      },
-      {
-        menuId: '2210574586898433',
-        name: 'Json校验格式化工具1',
-        component: '/home/home1',
-        redirect: '',
-        alwaysShow: true,
-        hidden: false,
-        meta: {
-          title: 'Json校验格式化工具',
-          icon: '',
-          roles: null,
-        },
-      },
-    ],
-    meta: {
-      title: 'Json工具',
-      icon: 'user',
-      roles: null,
-    },
-  },
-];
 
 const MainApp = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -59,17 +15,20 @@ const MainApp = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const [dynamicMenuData, setDynamicMenuData] = useState<any[]>([])
   useEffect(() => {
-    getList().then((res) => {
-      console.log('res===>', res);
-    });
-  }, []);
+    getMenu().then(res => {
+      console.log('res====>11111111', res)
+      setDynamicMenuData(res.data as any[])
+    })
+  }, [])
+
 
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <Logo width={!collapsed ? 85 : 50} />
-        <DynamicMenu menuData={menuData} />
+        {dynamicMenuData && dynamicMenuData.length && <DynamicMenu menuData={dynamicMenuData} />}
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
@@ -91,11 +50,16 @@ const MainApp = () => {
             background: colorBgContainer,
           }}
         >
-          <Outlet />
+          <Suspense>
+            <Routes>
+              {dynamicMenuData && dynamicMenuData[0] && dynamicMenuData[0].path && <Route path="/" element={<Navigate to={dynamicMenuData[0].path} />} />}
+              {dynamicMenuData && dynamicMenuData.length && DynamicRoutes(dynamicMenuData)}
+            </Routes>
+          </Suspense>
         </Content>
       </Layout>
     </Layout>
   );
 };
 
-export default MainApp;
+export default memo(MainApp);

@@ -6,58 +6,43 @@ Mock.mock('/api/menu', 'get', () => {
         msg: '获取菜单成功',
         data: [
             {
-                "id": 1, 
-                "label": "Dashboard",
-                "icon": "dashboard",
-                "url": "/dashboard"
+                key: 'dashboard',
+                path: '/dashboard',
+                component: '/dashboard',
+                meta: {
+                    title: '仪表盘',
+                    icon: 'DashboardTwoTone',
+
+                },
             },
             {
-                "id": 2,
-                "label": "Products",
-                "icon": "products",
-                "url": "/products",
-                "children": [
+                key: 'users',
+                path: '/users',
+                component: 'layout',
+                meta: {
+                    title: '用户管理',
+                    icon: 'UserOutlined',
+                },
+                children: [
                     {
-                        "id": 21,
-                        "label": "All Products",
-                        "url": "/products/all"
+                        key: 'list',
+                        path: '/users/list',
+                        component: '/users/list',
+                        meta: {
+                            title: '用户列表',
+                            icon: 'OrderedListOutlined'
+                        }
                     },
                     {
-                        "id": 22,
-                        "label": "Add New Product",
-                        "url": "/products/add"
+                        key: 'add',
+                        path: '/users/add',
+                        meta: {
+                            title: '添加用户',
+                            icon: 'UserAddOutlined'
+                        }
                     },
-                    {
-                        "id": 23,
-                        "label": "Categories",
-                        "url": "/products/categories",
-                        "children": [
-                            {
-                                "id": 231,
-                                "label": "Electronics",
-                                "url": "/products/categories/electronics"
-                            },
-                            {
-                                "id": 232,
-                                "label": "Clothing",
-                                "url": "/products/categories/clothing"
-                            }
-                        ]
-                    }
-                ]
+                ],
             },
-            {
-                "id": 3,
-                "label": "Orders",
-                "icon": "orders",
-                "url": "/orders"
-            },
-            {
-                "id": 4,
-                "label": "Users",
-                "icon": "users",
-                "url": "/users"
-            }
         ]
 
     }
