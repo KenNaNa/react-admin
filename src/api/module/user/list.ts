@@ -1,5 +1,5 @@
 import React from 'react'
-import request from '~/src/api/request/index';
+import request from '@/api/request/index';
 import { IData, IApiResponse } from '../types';
 
 /**
