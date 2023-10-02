@@ -1,34 +1,31 @@
 import React from 'react';
-import { Outlet } from 'react-router';
+import { Route, useRoutes } from 'react-router';
 const About = React.lazy(() => import('@/pages/about'));
 const Home = React.lazy(() => import('@/pages/home'));
-const Login = React.lazy(() => import('@/pages/login'));
 
+// 静态路由在这里配置
 const staticRouter = [
   {
-    path: '/pages',
-    element: <Outlet />,
-    children: [
-      {
-        path: '/pages/home',
-        element: <Home />
-      }
-    ]
+    path: '/home',
+    key: 'home',
+    element: <Home />,
   },
   {
-    path: '/pages',
-    element: <Outlet />,
-    children: [
-      {
-        path: '/pages/about',
-        element: <About />
-      }
-    ]
-  },
-  {
-    path: '/login',
-    element: <Login />
+    path: '/about',
+    key: 'about',
+    element: <About />,
   },
 ];
 
-export default staticRouter
+
+export default function StaticRoutes() {
+  return staticRouter.map((item: any) => (
+    <Route
+      key={item.key}
+      path={item.path}
+      element={item.element}
+    >
+      {item.children && item.children.length && useRoutes(item.children)}
+    </Route>
+  ));
+}

@@ -5,6 +5,7 @@ import { getMenu } from '@/api/module/user/menu';
 import Logo from '../logo';
 import DynamicMenu from '../sider';
 import DynamicRoutes from '@/router/dynamic.router';
+import StaticRoutes from '@/router/static.router';
 import { Routes, Route, Navigate } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
@@ -16,13 +17,13 @@ const MainApp = () => {
   } = theme.useToken();
 
   const [dynamicMenuData, setDynamicMenuData] = useState<any[]>([])
+
   useEffect(() => {
     getMenu().then(res => {
       console.log('res====>11111111', res)
       setDynamicMenuData(res.data as any[])
     })
   }, [])
-
 
   return (
     <Layout>
@@ -52,6 +53,7 @@ const MainApp = () => {
         >
           <Suspense>
             <Routes>
+              {StaticRoutes()}
               {dynamicMenuData && dynamicMenuData[0] && dynamicMenuData[0].path && <Route path="/" element={<Navigate to={dynamicMenuData[0].path} />} />}
               {dynamicMenuData && dynamicMenuData.length && DynamicRoutes(dynamicMenuData)}
             </Routes>
