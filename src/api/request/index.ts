@@ -44,7 +44,7 @@ request.interceptors.response.use(
           message.error('拒绝访问')
           break
         case EErrorCode.NOT_FOUND:
-          message.error(`请求地址出错: ${err.response.config.url}`)
+          message.error(`请求地址出错: ${error.response.config.url}`)
           break
         case EErrorCode.SERVER_INTER_ERROR:
           message.error('服务器内部错误')
