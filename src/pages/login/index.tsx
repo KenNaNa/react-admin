@@ -16,8 +16,6 @@ const Login = () => {
         try {
             // 登录 
             await loginStore.goLogin({ username, password })
-            // 跳转首页
-            navigate('/home', { replace: true })
             // 重新加载当前页面
             window.location.href = '/home';
             // 提示用户登录成功
