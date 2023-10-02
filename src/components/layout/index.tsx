@@ -6,7 +6,8 @@ import Logo from '../logo';
 import DynamicMenu from '../sider';
 import DynamicRoutes from '@/router/dynamic.router';
 import StaticRoutes from '@/router/static.router';
-import { Routes, Route, Navigate } from 'react-router';
+import { Routes, Route, Navigate, redirect } from 'react-router';
+import { getItem } from '@/utils/storage';
 
 const { Header, Sider, Content } = Layout;
 
@@ -20,7 +21,6 @@ const MainApp = () => {
 
   useEffect(() => {
     getMenu().then(res => {
-      console.log('res====>11111111', res)
       setDynamicMenuData(res.data as any[])
     })
   }, [])
@@ -64,4 +64,4 @@ const MainApp = () => {
   );
 };
 
-export default memo(MainApp);
+export default MainApp;

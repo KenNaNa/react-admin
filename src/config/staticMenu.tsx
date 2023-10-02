@@ -1,3 +1,4 @@
+// 配置静态菜单
 const staticMenu = [
     {
        key: 'home',
