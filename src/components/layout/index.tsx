@@ -5,7 +5,7 @@ import { Layout, Menu, Button, theme } from 'antd';
 import { Outlet } from 'react-router-dom';
 import Logo from '../logo';
 import DynamicMenu from '../../router';
-import { getList } from '../../api/modules/list';
+import { getList } from '../../api/module/user/list';
 
 const { Header, Sider, Content } = Layout;
 
@@ -64,29 +64,6 @@ const MainApp = () => {
       console.log('res===>', res);
     });
   }, []);
-
-  //   <Menu
-  //   theme="dark"
-  //   mode="inline"
-  //   defaultSelectedKeys={['1']}
-  //   items={[
-  //     {
-  //       key: '1',
-  //       icon: <UserOutlined />,
-  //       label: 'nav 1',
-  //     },
-  //     {
-  //       key: '2',
-  //       icon: <VideoCameraOutlined />,
-  //       label: 'nav 2',
-  //     },
-  //     {
-  //       key: '3',
-  //       icon: <UploadOutlined />,
-  //       label: 'nav 3',
-  //     },
-  //   ]}
-  // />
 
   return (
     <Layout>
