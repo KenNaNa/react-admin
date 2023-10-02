@@ -18,6 +18,9 @@ module.exports = {
 
   resolve: {
     extensions: [".js", ".tsx", ".ts"],
+    alias: {
+      '@': path.join(__dirname, '../src'),
+    }
   },
 
   cache: {
