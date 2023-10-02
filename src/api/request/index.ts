@@ -1,6 +1,7 @@
 import { message } from 'antd';
 import axios from 'axios';
 import { EErrorCode } from './code';
+import { getItem } from '@/utils/storage';
 
 const request = axios.create({
   baseURL: '/api', // 替换为你的API基本URL
@@ -11,7 +12,7 @@ const request = axios.create({
 request.interceptors.request.use(
   (config) => {
     // 在请求发送前可以在这里进行一些处理，例如添加请求头
-    // config.headers.Authorization = 'Bearer your-token';
+    config.headers.Authorization = `Bearer ${getItem('token')}`;
     return config;
   },
   (error) => {

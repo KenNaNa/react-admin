@@ -1,11 +1,12 @@
 import { makeAutoObservable } from 'mobx'
 import { IGoLoginParams, toLogin, toLogout } from '@/api/module/user/login'
 import { message } from 'antd'
+import { setItem, getItem, removeItem } from '@/utils/storage'
 
 class LoginStore {
-    token = ''
+    token = getItem('token') || ''
     isLogin = false
-    username = ''
+    username = getItem('username') || ''
 
     constructor() {
         makeAutoObservable(this)
@@ -23,6 +24,10 @@ class LoginStore {
             this.token = res.data.token
             this.username = res.data.username
 
+            setItem('isLogin', `${this.isLogin}`)
+            setItem('token', `${this.token}`)
+            setItem('username', `${this.username}`)
+
             message.success(`${this.username} ${res.msg}`)
         })
     }
@@ -32,6 +37,11 @@ class LoginStore {
             this.isLogin = false
             this.token = ''
             this.username = ''
+
+            removeItem('isLogin')
+            removeItem('token')
+            removeItem('username')
+            
 
             message.success(`${this.username} ${res.msg}`)
         })
