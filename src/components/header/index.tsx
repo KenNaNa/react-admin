@@ -5,12 +5,15 @@ const { Header } = Layout;
 import './index.less'
 import useStore from '@/store';
 import { getItem, removeItem } from '@/utils/storage';
+import { useNavigate } from 'react-router';
 
 export default function TopHeader({ colorBgContainer, collapsed, setCollapsed }: any) {
     const { loginStore } = useStore()
     const username = loginStore.username || getItem('username')
+    const navigate = useNavigate()
     const onConfirm = () => {
-        window.location.href = '/login'
+        // window.location.href = '/login'
+        navigate('/login', { replace: true })
         loginStore.isLogin = false
         loginStore.token = ''
         loginStore.username = ''
@@ -33,7 +36,7 @@ export default function TopHeader({ colorBgContainer, collapsed, setCollapsed }:
             />
 
             <div className="user-info">
-                <span className="user-name">{ username }</span>
+                <span className="user-name">{username}</span>
                 <span className="user-logout">
                     <Popconfirm
                         onConfirm={onConfirm}

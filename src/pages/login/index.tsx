@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import useStore from '@/store'
 import { Card, Form, Input, Checkbox, Button, message } from 'antd'
 const logo = 'https://github.com/ztK63LrD/article-pc/blob/master/src/assets/logo.jpg?raw=true'
@@ -21,7 +21,7 @@ const Login = () => {
             // 提示用户登录成功
             message.success('登录成功！').then(() => {
                 // 重新加载当前页面
-                window.location.href = '/home'
+                navigate('/home', { replace: true })
             }).then(() => {
                 setDisabled(false)
             })
