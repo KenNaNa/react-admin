@@ -9,3 +9,5 @@ react admin
 [react](https://react.dev/)
 
 [react-router](https://reactrouter.com/en/main)
+
+[mobx](https://juejin.cn/post/6985871185049452580)

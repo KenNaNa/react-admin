@@ -1,13 +1,13 @@
-import React, { useState, useEffect, memo, Suspense } from 'react';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Layout, Button, theme } from 'antd';
+import React, { useState, Suspense } from 'react';
+import { Layout, theme } from 'antd';
 import Logo from '../logo';
 import DynamicMenu from '../sider';
 import DynamicRoutes from '@/router/dynamic.router';
 import StaticRoutes from '@/router/static.router';
 import { Routes, Route, Navigate } from 'react-router';
-
-const { Header, Sider, Content } = Layout;
+import TopHeader from '../header';
+import Loading from '../loading';
+const { Sider, Content } = Layout;
 
 const MainApp = ({ dynamicMenuData }: any) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -22,18 +22,7 @@ const MainApp = ({ dynamicMenuData }: any) => {
         {dynamicMenuData && dynamicMenuData.length && <DynamicMenu menuData={dynamicMenuData} />}
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
+        <TopHeader colorBgContainer={colorBgContainer} collapsed={collapsed} setCollapsed={setCollapsed} />
         <Content
           style={{
             margin: '20px 10px',
@@ -41,7 +30,7 @@ const MainApp = ({ dynamicMenuData }: any) => {
             background: colorBgContainer,
           }}
         >
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <Routes>
               {StaticRoutes()}
               {dynamicMenuData && dynamicMenuData[0] && dynamicMenuData[0].path && <Route path="/" element={<Navigate to={dynamicMenuData[0].path} />} />}
