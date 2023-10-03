@@ -6,6 +6,7 @@ import DynamicRoutes from '@/router/dynamic.router';
 import StaticRoutes from '@/router/static.router';
 import { Routes, Route, Navigate } from 'react-router';
 import TopHeader from '../header';
+import Loading from '../loading';
 const { Sider, Content } = Layout;
 
 const MainApp = ({ dynamicMenuData }: any) => {
@@ -29,7 +30,7 @@ const MainApp = ({ dynamicMenuData }: any) => {
             background: colorBgContainer,
           }}
         >
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <Routes>
               {StaticRoutes()}
               {dynamicMenuData && dynamicMenuData[0] && dynamicMenuData[0].path && <Route path="/" element={<Navigate to={dynamicMenuData[0].path} />} />}
