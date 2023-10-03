@@ -4,7 +4,7 @@ import type { MenuProps } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 import IconFont from "../icon";
 import { NavLink as Link, useLocation } from 'react-router-dom';
-import staticMenu from "@/config/staticMenu";
+import staticMenu from "@/config/static.menu";
 type MenuItem = Required<MenuProps>['items'][number];
 
 const { SubMenu } = Menu;
