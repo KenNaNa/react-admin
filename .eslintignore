@@ -1,0 +1,6 @@
+# .eslintignore 不需要检查的文件
+
+src/assets
+public
+dist
+node_modules

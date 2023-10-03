@@ -1,7 +1,7 @@
 // 判断token是否存在，如果存在正常渲染，如果不存在重定向到登录路由
 import React from 'react'
 import { getItem } from "@/utils/storage";
-import { Navigate, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from '@/pages/login';
 import Register from '@/pages/register';
 import Loading from '../loading';
