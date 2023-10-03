@@ -3,6 +3,8 @@ import React from 'react'
 import { getItem } from "@/utils/storage";
 import { Navigate, Routes, Route } from "react-router-dom";
 import Login from '@/pages/login';
+import Register from '@/pages/register';
+import Loading from '../loading';
 
 
 const Auth = ({ children }: any) => {
@@ -14,14 +16,16 @@ const Auth = ({ children }: any) => {
             </>
         )
     } else {
-        // 定向到登录
+        // 定向到注册登录
         return (
-            <div>
-                <Navigate to='/login' replace />
-                <Routes>
-                    <Route path='/login' element={<Login />} />
-                </Routes>
-            </div>
+            <React.Fragment>
+                <React.Suspense fallback={<Loading />}>
+                    <Routes>
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                    </Routes>
+                </React.Suspense>
+            </React.Fragment>
         )
     }
 }
