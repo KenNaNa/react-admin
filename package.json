@@ -1,9 +1,24 @@
 {
+  "name": "react-admin",
+  "description": "react admin",
+  "author": "kennana",
+  "license": "MIT",
+  "repository": "https://github.com/KenNaNa/react-admin.git",
+  "homepage": "https://kennana.github.io/react-admin",
+  "keywords": [
+    "react",
+    "admin",
+    "ts",
+    "typescript",
+    "react-router-dom",
+    "mobx"
+  ],
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development BASE_ENV=development webpack-dev-server -c build/webpack.dev.js",
     "build:test": "cross-env NODE_ENV=development BASE_ENV=test webpack-dev-server -c build/webpack.dev.js",
     "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.js",
-    "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.js"
+    "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.js",
+    "deploy": "npm run build:prod && gh-pages -d dist"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -32,6 +47,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "gh-pages": "^6.0.0",
     "html-webpack-plugin": "^5.5.3",
     "less": "^4.2.0",
     "less-loader": "^11.1.3",
