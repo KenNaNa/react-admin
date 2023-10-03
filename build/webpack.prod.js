@@ -6,6 +6,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const globAll = require('glob-all')
+const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 module.exports = merge(baseConfig, {
   mode: 'production', // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
   // devtool: '', // 不用配置devtool此项
@@ -41,6 +43,16 @@ module.exports = merge(baseConfig, {
             pure_funcs: ['console.log'], // 删除console.log
           },
         },
+      }),
+
+      // 清理无用css
+      new PurgeCSSPlugin({
+        // 检测src下所有tsx文件和public下index.html中使用的类名和id和标签名称
+        // 只打包这些文件中用到的样式
+        paths: globAll.sync([
+          `${path.join(__dirname, '../src')}/**/*.tsx`,
+          path.join(__dirname, '../public/index.html')
+        ]),
       }),
     ],
 
