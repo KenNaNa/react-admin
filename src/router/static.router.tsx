@@ -6,6 +6,11 @@ const Home = React.lazy(() => import('@/pages/home'));
 // 静态路由在这里配置
 const staticRouter = [
   {
+    path: '/',
+    key: 'home',
+    element: <Home />
+  },
+  {
     path: '/home',
     key: 'home',
     element: <Home />,

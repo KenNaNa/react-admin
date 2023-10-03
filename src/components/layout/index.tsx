@@ -1,29 +1,19 @@
 import React, { useState, useEffect, memo, Suspense } from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout, Button, theme } from 'antd';
-import { getMenu } from '@/api/module/user/menu';
 import Logo from '../logo';
 import DynamicMenu from '../sider';
 import DynamicRoutes from '@/router/dynamic.router';
 import StaticRoutes from '@/router/static.router';
-import { Routes, Route, Navigate, redirect } from 'react-router';
-import { getItem } from '@/utils/storage';
+import { Routes, Route, Navigate } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
 
-const MainApp = () => {
+const MainApp = ({ dynamicMenuData }: any) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
-  const [dynamicMenuData, setDynamicMenuData] = useState<any[]>([])
-
-  useEffect(() => {
-    getMenu().then(res => {
-      setDynamicMenuData(res.data as any[])
-    })
-  }, [])
 
   return (
     <Layout>

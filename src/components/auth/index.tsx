@@ -4,15 +4,20 @@ import { getItem } from "@/utils/storage";
 import { Navigate, Routes, Route } from "react-router-dom";
 import Login from '@/pages/login';
 
+
 const Auth = ({ children }: any) => {
     const isToken = getItem('token')
     if (isToken) {
-        return (<>{children}</>)
+        return (
+            <>
+                {children}
+            </>
+        )
     } else {
         // 定向到登录
         return (
             <div>
-                <Navigate to='/login' replace/>
+                <Navigate to='/login' replace />
                 <Routes>
                     <Route path='/login' element={<Login />} />
                 </Routes>

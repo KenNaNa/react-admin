@@ -16,10 +16,12 @@ const Login = () => {
         try {
             // 登录 
             await loginStore.goLogin({ username, password })
-            // 重新加载当前页面
-            window.location.href = '/home';
+            
             // 提示用户登录成功
-            message.success('登录成功！')
+            message.success('登录成功！').then(() => {
+                // 重新加载当前页面
+                window.location.href = '/home'
+            })
         } catch (error: any) {
             message.error(error.response?.data.message || '登录失败')
         }
