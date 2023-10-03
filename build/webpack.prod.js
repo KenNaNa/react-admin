@@ -1,4 +1,5 @@
 // 生产环境配置文件
+const path = require('path')
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const CopyPlugin = require('copy-webpack-plugin');
