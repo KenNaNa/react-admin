@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import useStore from '@/store'
 import { Card, Form, Input, Checkbox, Button, message } from 'antd'
 const logo = 'https://github.com/ztK63LrD/article-pc/blob/master/src/assets/logo.jpg?raw=true'
@@ -8,7 +7,6 @@ const Item = Form.Item
 
 const Login = () => {
     const { loginStore } = useStore()
-    const navigate = useNavigate()
     // 获取表单数据
     const onFinish = async (values: any) => {
         console.log(values)
