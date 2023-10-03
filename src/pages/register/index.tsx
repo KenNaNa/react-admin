@@ -1,39 +1,23 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import useStore from '@/store'
-import { Card, Form, Input, Checkbox, Button, message } from 'antd'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { Form, Input, Button, Card, Checkbox } from 'antd';
+const { Item } = Form
 const logo = 'https://github.com/ztK63LrD/article-pc/blob/master/src/assets/logo.jpg?raw=true'
 import './index.less'
-const Item = Form.Item
+import { toRegister } from '@/api/module/user/login';
 
-const Login = () => {
-    const { loginStore } = useStore()
-    const navigate = useNavigate()
+export default function Register() {
     const [disabled, setDisabled] = useState(false)
-    // 获取表单数据
-    const onFinish = async (values: any) => {
-        console.log(values)
+    const navigate = useNavigate()
+    const onFinish = (values: any) => {
         const { username, password } = values
-        try {
-            // 登录 
-            await loginStore.goLogin({ username, password })
-            setDisabled(true)
-            // 提示用户登录成功
-            message.success('登录成功！').then(() => {
-                // 重新加载当前页面
-                navigate('/home', { replace: true })
-            }).then(() => {
-                setDisabled(false)
-            })
-        } catch (error: any) {
-            setDisabled(false)
-            message.error(error.response?.data.message || '登录失败')
-        }
 
-    }
-    // 去注册
-    const toRegister = () => {
-        navigate('/register', { replace: true })
+        toRegister({ username, password }).then(res => {
+            setDisabled(true)
+            navigate('/login', { replace: true })
+        }).catch(() => {
+            setDisabled(false)
+        })
     }
     return (
         <div className='login'>
@@ -59,22 +43,38 @@ const Login = () => {
                             message: '请输入6位密码'
                         }
                     ]}>
-                        <Input size='large' placeholder='请输入密码' />
+                        <Input.Password size='large' placeholder='请输入密码' />
+                    </Item>
+                    <Item
+                        name="confirmPassword"
+                        dependencies={['password']}
+                        rules={[
+                            {
+                                required: true,
+                                message: '请确认密码',
+                            },
+                            ({ getFieldValue }) => ({
+                                validator(_, value) {
+                                    if (!value || getFieldValue('password') === value) {
+                                        return Promise.resolve();
+                                    }
+                                    return Promise.reject(new Error('两次密码不一致'));
+                                },
+                            }),
+                        ]}
+                    >
+                        <Input.Password size='large' placeholder='确认密码' />
                     </Item>
                     <Item
                         name="remember"
                         valuePropName='checked'
                     >
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Checkbox className='login-checkbox-label'>
-                                我已经阅读并同意 [用户协议] 和 [隐私条款]
-                            </Checkbox>
-                            <Button onClick={toRegister} style={{ width: '100px' }} type='primary' size='small'>去注册</Button>
-                        </div>
-
+                        <Checkbox className='login-checkbox-label'>
+                            我已经阅读并同意 [用户协议] 和 [隐私条款]
+                        </Checkbox>
                     </Item>
                     <Item>
-                        <Button type='primary' htmlType='submit' size='large' block>登录</Button>
+                        <Button type='primary' htmlType='submit' size='large' block>注册</Button>
                     </Item>
                 </Form>
             </Card>
@@ -82,7 +82,3 @@ const Login = () => {
     )
 }
 
-
-
-
-export default Login

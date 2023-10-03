@@ -28,3 +28,16 @@ Mock.mock('/api/logout', 'post', {
   msg: '退出登录成功',
   data: null,
 });
+
+// 模拟注册接口
+Mock.mock('/api/register', 'post', (options) => {
+  const { username } = options.body
+
+  return {
+    code: 200,
+    msg: '注册成功',
+    data: {
+      username
+    }
+  }
+})

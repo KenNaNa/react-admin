@@ -6,6 +6,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const globAll = require('glob-all')
+const PurgeCSSPlugin = require('purgecss-webpack-plugin')
+const CompressionPlugin  = require('compression-webpack-plugin')
 module.exports = merge(baseConfig, {
   mode: 'production', // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
   // devtool: '', // 不用配置devtool此项
@@ -42,6 +45,25 @@ module.exports = merge(baseConfig, {
           },
         },
       }),
+
+      // 清理无用css
+      new PurgeCSSPlugin({
+        // 检测src下所有tsx文件和public下index.html中使用的类名和id和标签名称
+        // 只打包这些文件中用到的样式
+        paths: globAll.sync([
+          `${path.join(__dirname, '../src')}/**/*.tsx`,
+          path.join(__dirname, '../public/index.html')
+        ]),
+      }),
+
+      new CompressionPlugin({
+        test: /.(js|css)$/, // 只生成css,js压缩文件
+        filename: '[path][base].gz', // 文件命名
+        algorithm: 'gzip', // 压缩格式,默认是gzip
+        test: /.(js|css)$/, // 只生成css,js压缩文件
+        threshold: 10240, // 只有大小大于该值的资源会被处理。默认值是 10k
+        minRatio: 0.8 // 压缩率,默认值是 0.8
+      })
     ],
 
     splitChunks: {

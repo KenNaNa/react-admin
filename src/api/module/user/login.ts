@@ -17,7 +17,7 @@ export interface IGoLoginParams {
  * @param {string} username 用户名
  * @param {string} password 登录密码
  **/
-export const toLogin = ({username, password}: IGoLoginParams): Promise<IApiResponse<IData>> => {
+export const toLogin = ({ username, password }: IGoLoginParams): Promise<IApiResponse<IData>> => {
     return request.post('/login', { username, password })
 }
 
@@ -29,4 +29,13 @@ export const toLogin = ({username, password}: IGoLoginParams): Promise<IApiRespo
  **/
 export const toLogout = (): Promise<IApiResponse<IData>> => {
     return request.post('/logout')
+}
+
+/**
+ * @description 用户注册
+ * @param {string} username 用户名
+ * @param {string} password 登录密码
+ **/
+export const toRegister = ({ username, password }: IGoLoginParams): Promise<IApiResponse<IData>> => {
+    return request.post('/register', { username, password })
 }
