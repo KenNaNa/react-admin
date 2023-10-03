@@ -2,9 +2,9 @@ import { message } from 'antd';
 import axios from 'axios';
 import { EErrorCode } from './code';
 import { getItem, removeItem } from '@/utils/storage';
-
+const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
 const request = axios.create({
-  baseURL: '/api', // 替换为你的API基本URL
+  baseURL: isDev ? '/api' : '/react-admin/api', // 替换为你的API基本URL
   timeout: 5000, // 请求超时时间（毫秒）
 });
 
