@@ -1,6 +1,5 @@
 import { makeAutoObservable } from 'mobx'
 import { IGoLoginParams, toLogin, toLogout } from '@/api/module/user/login'
-import { message } from 'antd'
 import { setItem, getItem, removeItem } from '@/utils/storage'
 
 class LoginStore {

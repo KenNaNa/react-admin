@@ -7,8 +7,6 @@ import { NavLink as Link, useLocation } from 'react-router-dom';
 import staticMenu from "@/config/static.menu";
 type MenuItem = Required<MenuProps>['items'][number];
 
-const { SubMenu } = Menu;
-
 /**
  * @description 获取 menuitem
  **/
