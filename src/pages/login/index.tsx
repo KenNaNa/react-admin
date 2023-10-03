@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useStore from '@/store'
 import { Card, Form, Input, Checkbox, Button, message } from 'antd'
 const logo = 'https://github.com/ztK63LrD/article-pc/blob/master/src/assets/logo.jpg?raw=true'
@@ -7,6 +7,7 @@ const Item = Form.Item
 
 const Login = () => {
     const { loginStore } = useStore()
+    const [disabled, setDisabled] = useState(false)
     // 获取表单数据
     const onFinish = async (values: any) => {
         console.log(values)
@@ -14,13 +15,16 @@ const Login = () => {
         try {
             // 登录 
             await loginStore.goLogin({ username, password })
-            
+            setDisabled(true)
             // 提示用户登录成功
             message.success('登录成功！').then(() => {
                 // 重新加载当前页面
                 window.location.href = '/home'
+            }).then(() => {
+                setDisabled(false)
             })
         } catch (error: any) {
+            setDisabled(false)
             message.error(error.response?.data.message || '登录失败')
         }
 
@@ -30,7 +34,7 @@ const Login = () => {
             <Card className='login-container'>
                 <img src={logo} alt="图片" className='login-logo' />
                 {/* 登录表单 */}
-                <Form validateTrigger={['onBlur', 'onChange']} onFinish={onFinish} initialValues={{ remember: true }}>
+                <Form disabled={disabled} validateTrigger={['onBlur', 'onChange']} onFinish={onFinish} initialValues={{ remember: true }}>
                     <Item name='username' rules={[
                         { required: true, message: '请输入手机号' },
                         {
