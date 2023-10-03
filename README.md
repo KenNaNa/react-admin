@@ -1,5 +1,39 @@
 # react-admin
 
+[🎉 A magical react admin](https://github.com/KenNaNa/react-admin/tree/main)
+
+目前就是从零开始使用 webpack 搭建环境，用到是 webpack5 来搭建 react 环境，使用到了以下这些插件
+
+- babel-loader 用来转义 es6 -> es5
+- copy-webpack-plugin 用来拷贝一些文件
+- css-loader 加载 css
+- less-loader 将 less 转成 css
+- style-loader 将 css 加载到 dom 元素上面
+- css-minimizer-webpack-plugin 用于分离css，可以缓存
+- html-webpack-plugin 打包压缩 html
+- mini-css-extract-plugin 分离 css
+- speed-measure-webpack-plugin 用于测量速度
+- terser-webpack-plugin 压缩 js
+- thread-loader 多线程打包
+- webpack-dev-server 启动本地服务
+- webpack-merge 合并公共变量
+- antd 组件库
+- axios 接口请求库
+- mobx react store
+- react
+- react-router-dom
+
+接下来我会继续实现以下的功能，包括学习
+
+- react 基础知识
+- react-router-dom 基础知识
+- mobx 共享仓库
+
+并写成对应的文章，发布出来，供大家学习
+
+可以给我点赞，关注我下我的 github 地址
+
+
 React v18 是 React 框架的一个版本，用于构建前端应用程序。一个后台管理系统通常需要一系列功能，以便有效地管理和监控一个网站或应用程序。以下是一些常见的后台管理系统功能，你可以考虑在 React v18 中实现：
 
 1. 用户认证与授权：
@@ -71,9 +105,17 @@ React v18 是 React 框架的一个版本，用于构建前端应用程序。一
 
 这些功能可以根据具体的后台管理系统需求进行自定义和扩展。在 React v18 中，你可以利用新的特性和工具来构建更灵活、交互性强、性能优越的后台管理系统。
 
-react admin
+目前实现了登录页面
 
-[前端工程化](https://juejin.cn/post/7111922283681153038?searchId=20230928235758D2B65B5CFA0E66F85297#heading-31)
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/314359715706443085e0c1afb34cf0ec~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1339&h=601&s=837380&e=png&b=f6efec)
+
+实现了动态菜单，动态路由
+
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/44409e6565864da9b2ca13ebda4694ea~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1352&h=587&s=46386&e=png&b=ffffff)
+
+react admin
 
 [组件库](https://ant.design/docs/react/getting-started-cn)
 
@@ -82,3 +124,7 @@ react admin
 [react-router](https://reactrouter.com/en/main)
 
 [mobx](https://juejin.cn/post/6985871185049452580)
+
+
+[前端工程化](https://juejin.cn/post/7111922283681153038?searchId=20230928235758D2B65B5CFA0E66F85297#heading-31)
+
