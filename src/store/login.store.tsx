@@ -5,7 +5,7 @@ import { setItem, getItem, removeItem } from '@/utils/storage'
 
 class LoginStore {
     token = getItem('token') || ''
-    isLogin = false
+    isLogin = Boolean(getItem('isLogin')) || false
     username = getItem('username') || ''
 
     constructor() {
@@ -20,15 +20,13 @@ class LoginStore {
         }
 
         toLogin(params).then((res) => {
+            setItem('isLogin', `${res.data.isLogin}`)
+            setItem('token', `${res.data.token}`)
+            setItem('username', `${res.data.username}`)
+
             this.isLogin = res.data.isLogin
             this.token = res.data.token
             this.username = res.data.username
-
-            setItem('isLogin', `${this.isLogin}`)
-            setItem('token', `${this.token}`)
-            setItem('username', `${this.username}`)
-
-            message.success(`${this.username} ${res.msg}`)
         })
     }
 
@@ -41,9 +39,6 @@ class LoginStore {
             removeItem('isLogin')
             removeItem('token')
             removeItem('username')
-            
-
-            message.success(`${this.username} ${res.msg}`)
         })
     }
 

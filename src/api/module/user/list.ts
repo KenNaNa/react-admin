@@ -1,4 +1,3 @@
-import React from 'react'
 import request from '@/api/request/index';
 import { IData, IApiResponse } from '../types';
 
