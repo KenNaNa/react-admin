@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import axios from 'axios';
 import { EErrorCode } from './code';
-import { getItem } from '@/utils/storage';
+import { getItem, removeItem } from '@/utils/storage';
 
 const request = axios.create({
   baseURL: '/api', // 替换为你的API基本URL
@@ -38,7 +38,13 @@ request.interceptors.response.use(
           message.error('请求错误')
           break
         case EErrorCode.TOKEN_EXPIRED:
-          message.error('Token过期，请重新登录')
+          message.error('Token过期，请重新登录').then(() => {
+            removeItem('token')
+            removeItem('isLogin')
+            removeItem('username')
+          }).then(() => {
+            window.location.href = '/login'
+          })
           break
         case EErrorCode.ACCESS_DENY:
           message.error('拒绝访问')
