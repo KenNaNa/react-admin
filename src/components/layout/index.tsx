@@ -25,7 +25,7 @@ const MainApp = ({ dynamicMenuData }: any) => {
         <TopHeader colorBgContainer={colorBgContainer} collapsed={collapsed} setCollapsed={setCollapsed} />
         <Content
           style={{
-            margin: '20px 10px',
+            margin: '10px 10px',
             minHeight: 280,
             background: colorBgContainer,
           }}
