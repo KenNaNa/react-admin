@@ -11,16 +11,17 @@ export default function App() {
   const [dynamicMenuData, setDynamicMenuData] = useState<any[]>([])
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const isToken = getItem('token')
-  if(!isToken && pathname !== '/login') {
-    useEffect(() => {
-      navigate('/login', { replace: true })
-    }, [])
-  }
+
   useEffect(() => {
     getMenu().then(res => {
       setDynamicMenuData(res.data as any[])
     })
+
+    // 判断登录跳转
+    const isToken = getItem('token')
+    if (!isToken && (pathname !== '/login' && pathname !== '/register')) {
+      navigate('/login', { replace: true })
+    }
   }, [])
 
   return (
