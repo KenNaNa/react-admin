@@ -2,6 +2,8 @@
 const isDev = process.env.NODE_ENV === "development";
 // 设置 port
 const port = isDev ? 8080 : 80
+// 配置打包部署路径
+const publicPath = isDev ? "/" : "/react-admin/"
 // 配置开发环境
 const development = {
     '/user': 'http:xxxx.dev.com/user',
@@ -35,11 +37,11 @@ const buildProxy = (isDev) => {
             secure: false,
         }
     }
-    console.dir('proxy===>', proxy)
     return proxy;
 }
 module.exports = {
     isDev,
     port,
     buildProxy,
+    publicPath,
 }

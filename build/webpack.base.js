@@ -3,7 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { isDev, port, buildProxy } = require('../envs')
+const { isDev, port, buildProxy, publicPath } = require('../envs')
 // const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
 module.exports = {
   // 打包入口
@@ -14,7 +14,7 @@ module.exports = {
     filename: "static/js/[name].js", // 每个输出js的名称
     path: path.join(__dirname, "../dist"), // 打包结果输出路径
     clean: true, // webpack4需要配置clean-webpack-plugin来删除dist文件,webpack5内置了
-    publicPath: isDev ? "/" : "/react-admin/", // 打包后文件的公共前缀路径
+    publicPath, // 打包后文件的公共前缀路径
   },
 
   // server
