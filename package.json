@@ -38,6 +38,7 @@
     "mobx-react-lite": "^4.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-quill": "^2.0.0",
     "react-router": "^6.16.0",
     "react-router-dom": "^6.16.0",
     "toolkit-use": "^0.1.9"

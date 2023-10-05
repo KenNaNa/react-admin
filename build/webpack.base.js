@@ -2,8 +2,9 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { isDev, port, buildProxy } = require('../envs')
+// const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
 module.exports = {
   // 打包入口
   entry: path.join(__dirname, "../src/index.tsx"),
@@ -16,6 +17,13 @@ module.exports = {
     publicPath: isDev ? "/" : "/react-admin/", // 打包后文件的公共前缀路径
   },
 
+  // server
+  devServer: {
+    port,
+    proxy: buildProxy(isDev)
+  },
+
+  // 自动解析文件扩展，路劲识别
   resolve: {
     extensions: [".js", ".tsx", ".ts"],
     alias: {
@@ -35,20 +43,18 @@ module.exports = {
         use: ["thread-loader", "babel-loader"],
       },
       {
-        include: [path.resolve(__dirname, "../src")],
         test: /\.css$/, //匹配 css 文件
         use: [
-          isDev ? "style-loader" : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css,
+          "style-loader", // 开发环境使用style-looader,打包模式抽离css,
           "css-loader",
           "postcss-loader",
         ],
       },
 
       {
-        include: [path.resolve(__dirname, "../src")],
-        test: /\.less$/, //匹配 css 文件
+        test: /\.less$/, //匹配 less 文件
         use: [
-          isDev ? "style-loader" : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css,
+          "style-loader", // 开发环境使用style-looader,打包模式抽离css,
           "css-loader",
           "postcss-loader",
           "less-loader",

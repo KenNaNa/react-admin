@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import RichEditor from '@/components/editor'
 
 export default function Home() {
+  const [value, setValue] = useState('')
   return (
     <div>
-      <h1>home</h1>
+      <RichEditor value={value} setValue={setValue} />
     </div>
   )
 }
