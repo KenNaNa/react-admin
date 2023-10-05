@@ -1,12 +1,18 @@
 html,
 body {
   height: 100%;
+  overflow: hidden;
 
   #root {
     height: 100%;
 
     .ant-layout {
       height: 100%;
+
+      .ant-layout-content {
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
     }
   }
 }

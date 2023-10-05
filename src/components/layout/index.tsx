@@ -27,7 +27,7 @@ const MainApp = ({ dynamicMenuData }: any) => {
           style={{
             margin: '10px 10px',
             minHeight: 280,
-            background: colorBgContainer,
+            background: '#f5f5f5',
           }}
         >
           <Suspense fallback={<Loading />}>
