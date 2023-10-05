@@ -17,9 +17,9 @@ git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO> 这里做出对应的替换
-# git push -f https://github.com/KenNaNa/react-admin.git master:gh-pages
+git push -f https://github.com/KenNaNa/react-admin.git master:gh-pages
 
 # 部署到 https://<USERNAME>.github.io
-git push -f git@github.com:KenNaNa/KenNaNa.github.io.git master
+# git push -f git@github.com:KenNaNa/KenNaNa.github.io.git master
 
 cd -
