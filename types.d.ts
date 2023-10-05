@@ -22,3 +22,5 @@ declare module 'toolkit-use';
 declare module 'echarts-for-react';
 
 declare module 'react-quill';
+
+declare module 'crypto-js';
