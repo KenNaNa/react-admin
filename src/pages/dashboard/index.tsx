@@ -53,28 +53,6 @@ function Dashboard() {
           </Card>
         </Col>
       </Row>
-
-      {/* 统计数据 */}
-      <Row style={{ marginTop: '10px' }} gutter={16}>
-        {/* 添加折线图 */}
-        <Col span={24 / cols}>
-          <Card title="折线图">
-            <EchartsForReact type='line' height='280px' />
-          </Card>
-        </Col>
-        {/* 添加柱状图 */}
-        <Col span={24 / cols}>
-          <Card title="柱状图">
-            <EchartsForReact type='bar' height='280px' />
-          </Card>
-        </Col>
-        {/* 添加饼状图 */}
-        <Col span={24 / cols}>
-          <Card title="饼状图">
-            <EchartsForReact type='pie' height='280px' />
-          </Card>
-        </Col>
-      </Row>
     </div>
   );
 }
