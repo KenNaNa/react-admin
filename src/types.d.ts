@@ -1,0 +1,1 @@
+declare module 'toolkit-use/dist/clip/index.min.esm';
