@@ -1,7 +1,12 @@
 import React from 'react';
-
+import PageWithTitle from '@/components/pageWithTitle';
 export default function UserList() {
+    const MainUserList = () => {
+        return (
+            <h1>UserList</h1>
+        )
+    }
     return (
-        <h1>UserList</h1>
+        <PageWithTitle title='用户列表' children={<MainUserList />} />
     )
 }
