@@ -1,5 +1,6 @@
+import { IMenuType } from "./menu.type"
 // 配置静态菜单
-const staticMenu = [
+const staticMenu: IMenuType[] = [
     {
        key: 'home',
        path: '/home',
