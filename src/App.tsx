@@ -25,13 +25,6 @@ export default function App() {
   }, [])
 
   return (
-    <Suspense fallback={<Loading />}>
-      {
-        dynamicMenuData && dynamicMenuData.length
-          ?
-          <Auth children={<MainApp dynamicMenuData={dynamicMenuData} />} />
-          : <Loading />
-      }
-    </Suspense>
+    dynamicMenuData && dynamicMenuData.length ? <Auth children={<MainApp dynamicMenuData={dynamicMenuData} />} /> : <Loading />
   )
 }
