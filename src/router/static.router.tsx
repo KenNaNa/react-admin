@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, useRoutes } from 'react-router';
+import { IRouterType } from '@/config/router.type';
 const About = React.lazy(() => import('@/pages/about'));
 const Home = React.lazy(() => import('@/pages/home'));
 
 // 静态路由在这里配置
-const staticRouter = [
+const staticRouter: IRouterType[] = [
   {
     path: '/',
     key: 'home',
@@ -24,7 +25,7 @@ const staticRouter = [
 
 
 export default function StaticRoutes() {
-  return staticRouter.map((item: any) => (
+  return staticRouter.map((item: IRouterType) => (
     <Route
       key={item.key}
       path={item.path}

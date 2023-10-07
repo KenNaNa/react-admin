@@ -1,13 +1,14 @@
 import React from 'react'
 import { Route, Outlet } from 'react-router-dom';
-
+import { IMenuType } from '@/config/menu.type';
+import { IRouterType } from '@/config/router.type';
 // 根据菜单数据生成动态路由
-const generateRoutesFromMenu = (menuData: any[]) => {
-    const routes: any[] = []
+const generateRoutesFromMenu = (menuData: IMenuType[]) => {
+    const routes: IRouterType[] = []
     menuData.forEach((menu) => {
       const Ele = React.lazy(() => import(`@/pages${menu.path}`))
       const element = menu.component === 'layout' ? <Outlet /> : <Ele />
-      const route: Record<string, any> = {
+      const route: IRouterType = {
         path: menu.path,
         key: menu.key,
         element: element,
