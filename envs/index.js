@@ -17,7 +17,7 @@ const production = {
     '/message': 'http:xxx.prod.com/message',
 }
 // build proxy
-const buildProxy = (isDev) => {
+const buildProxy = () => {
     /**
     proxy: {
       '/api': {
