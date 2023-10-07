@@ -24,9 +24,9 @@ const generateRoutesFromMenu = (menuData: IMenuType[]) => {
   }
   
 
-const DynamicRoutes = (dynamicMenuData: any) => {
-    const menuData = generateRoutesFromMenu(dynamicMenuData)
-    return menuData.map((item: any) => (
+const DynamicRoutes = (dynamicMenuData: IMenuType[]) => {
+    const routerData = generateRoutesFromMenu(dynamicMenuData)
+    return routerData.map((item: any) => (
         <Route
           key={item.key}
           path={item.path}
