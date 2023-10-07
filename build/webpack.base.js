@@ -3,8 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { isDev, port, buildProxy, publicPath } = require('../envs')
-// const isDev = process.env.NODE_ENV === "development"; // 是否是开发模式
+const { port, buildProxy, publicPath } = require('../envs')
 module.exports = {
   // 打包入口
   entry: path.join(__dirname, "../src/index.tsx"),
@@ -20,7 +19,7 @@ module.exports = {
   // server
   devServer: {
     port,
-    proxy: buildProxy(isDev)
+    proxy: buildProxy()
   },
 
   // 自动解析文件扩展，路劲识别
