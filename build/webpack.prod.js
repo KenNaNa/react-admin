@@ -11,7 +11,7 @@ const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const CompressionPlugin  = require('compression-webpack-plugin')
 module.exports = merge(baseConfig, {
   mode: 'production', // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
-  // devtool: '', // 不用配置devtool此项
+  devtool: 'eval-cheap-module-source-map', // 不用配置devtool此项
   plugins: [
     // 复制文件插件
     new CopyPlugin({
