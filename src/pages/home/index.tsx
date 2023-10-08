@@ -3,6 +3,8 @@ import RichEditor from '@/components/editor'
 import { ToolkitUseClipboard } from 'toolkit-use/dist/clip/index.min.esm'
 import { Button, message } from 'antd'
 import PageWithTitle from '@/components/pageWithTitle'
+import { driverSteps } from '@/config/driver.steps'
+import cDriver from '@/utils/driver'
 
 export default function Home() {
   const [value, setValue] = useState('')
@@ -20,9 +22,15 @@ export default function Home() {
     }).copy()
   }
 
+  const openCDriver = () => {
+    cDriver.initDriver(driverSteps.steps, {
+      showProgress: true
+    })
+  }
+
   const MainHome = () => {
     return (
-      <div>
+      <div className='react-quill-text'>
         <h1 style={{ fontSize: '18px' }}>react-quill富文本编辑器</h1>
         <RichEditor value={value} setValue={setValue} />
 
@@ -30,6 +38,11 @@ export default function Home() {
         <div className="copy-text">
           <span className="text">牛逼：{msg}</span>
           <Button type='primary' className="copy" onClick={copyFn}>复制</Button>
+        </div>
+
+
+        <div style={{marginTop: '20px'}}>
+          <Button onClick={openCDriver}>打开引导</Button>
         </div>
       </div >
     )

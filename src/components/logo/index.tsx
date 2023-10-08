@@ -6,7 +6,7 @@ const logoSrc =
 
 const Logo = ({ width }: { width: number }) => {
   return (
-    <div className="logo">
+    <div id='logoImage' className="logo">
       <Image preview={false} width={width} src={logoSrc} />
     </div>
   );
