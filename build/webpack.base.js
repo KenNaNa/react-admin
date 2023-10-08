@@ -37,7 +37,6 @@ module.exports = {
   module: {
     rules: [
       {
-        include: [path.resolve(__dirname, "../src")], // 只对项目src文件的ts,tsx进行loader解析
         test: /.(ts|tsx)$/, // 匹配.ts,tsx文件
         use: ["thread-loader", "babel-loader"],
       },
