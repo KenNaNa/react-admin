@@ -78,7 +78,7 @@ Mock.mock('/api/menu', 'get', () => {
                                 meta: {
                                     title: '添加销售',
                                     icon: 'UserAddOutlined'
-                                }
+                                },
                             },
                         ]
                     },

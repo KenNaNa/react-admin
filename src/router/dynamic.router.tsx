@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Outlet, useRoutes } from 'react-router-dom';
+import { Route, Outlet, Navigate } from 'react-router-dom';
 import { IMenuType } from '@/config/menu.type';
 import { IRouterType } from '@/config/router.type';
 // 根据菜单数据生成动态路由
@@ -11,10 +11,11 @@ const generateRoutesFromMenu = (menuData: IMenuType[]) => {
     if (menu.component === 'layout') {
       element = <Outlet />
     } else if (menu.component) {
-      console.log('menu.path===>', menu.path)
       const Ele = React.lazy(() => import(`@/pages${menu.path}`))
       element = <Ele />
-
+    } else {
+      // 匹配不到重定向问题
+      element = <Navigate to='/' replace={true} />
     }
 
     const route = (
