@@ -8,7 +8,7 @@ import Loading from './components/loading';
 import { getItem } from './utils/storage';
 import { useNavigate, useLocation } from 'react-router';
 export default function App() {
-  const [dynamicMenuData, setDynamicMenuData] = useState<any[]>([])
+  const [dynamicMenuData, setDynamicMenuData] = useState([])
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
