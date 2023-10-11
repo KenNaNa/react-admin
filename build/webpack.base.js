@@ -19,7 +19,7 @@ module.exports = {
   // server
   devServer: {
     port,
-    proxy: buildProxy()
+    // proxy: buildProxy()
   },
 
   // 自动解析文件扩展，路劲识别
@@ -30,9 +30,9 @@ module.exports = {
     }
   },
 
-  cache: {
-    type: "filesystem", // 使用文件缓存
-  },
+  // cache: {
+  //   type: "filesystem", // 使用文件缓存
+  // },
 
   module: {
     rules: [

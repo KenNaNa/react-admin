@@ -21,5 +21,6 @@ export interface IMenuType {
     path: string
     component: string
     meta: IMetaType
+    redirect?: string
     children?: IMenuType[]
 }
