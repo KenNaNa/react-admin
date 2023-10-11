@@ -36,6 +36,7 @@ Mock.mock('/api/menu', 'get', () => {
                     {
                         key: 'add',
                         path: '/users/add',
+                        component: '/users/list',
                         meta: {
                             title: '添加用户',
                             icon: 'UserAddOutlined'
@@ -84,6 +85,5 @@ Mock.mock('/api/menu', 'get', () => {
                 ],
             }
         ]
-
     }
 })
