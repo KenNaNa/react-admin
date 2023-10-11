@@ -33,6 +33,12 @@ const MainApp = ({ dynamicMenuData }: any) => {
           <Suspense fallback={<Loading />}>
             <Routes>
               {StaticRoutes()}
+              <Route
+                path="/*"
+                element={
+                  <Navigate to="/" replace={true} />
+                }
+              />
               {dynamicMenuData && dynamicMenuData[0] && dynamicMenuData[0].path && <Route path="/" element={<Navigate to={dynamicMenuData[0].path} />} />}
               {dynamicMenuData && dynamicMenuData.length && DynamicRoutes(dynamicMenuData)}
             </Routes>

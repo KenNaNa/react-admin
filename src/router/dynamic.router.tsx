@@ -1,54 +1,41 @@
 import React from 'react'
-import { Route, Outlet } from 'react-router-dom';
+import { Route, Outlet, Navigate } from 'react-router-dom';
 import { IMenuType } from '@/config/menu.type';
 import { IRouterType } from '@/config/router.type';
 // 根据菜单数据生成动态路由
 const generateRoutesFromMenu = (menuData: IMenuType[]) => {
   // 要处理重定向问题
   const routes: IRouterType[] = []
-  menuData.forEach((menu) => {
+  return menuData.map((menu) => {
     let element = null
     if (menu.component === 'layout') {
       element = <Outlet />
+    } else if (menu.component) {
+      const Ele = React.lazy(() => import(`@/pages${menu.path}`))
+      element = <Ele />
     } else {
-      console.log('menu.path===>', menu.path)
-      try {
-        const Ele = React.lazy(() => import(`@/pages${menu.path}`))
-        element = <Ele />
-      } catch (error) {
-        console.log('error===>', error)
-      }
-      
+      // 匹配不到重定向问题
+      element = <Navigate to='/' replace={true} />
     }
 
-    const route: IRouterType = {
-      path: menu.path,
-      key: menu.key,
-      element: element,
-    }
+    const route = (
+      <Route
+        key={menu.key}
+        path={menu.path}
+        element={element}
+      >
+        {menu.children && menu.children.length && generateRoutesFromMenu(menu.children)}
+      </Route>
+    );
 
-    if (menu.children && menu.children.length > 0) {
-      route.children = generateRoutesFromMenu(menu.children);
-    }
-
-    routes.push(route);
+    return route;
   })
-  console.log('routes====>', routes)
-  return routes
 }
 
 
 const DynamicRoutes = (dynamicMenuData: IMenuType[]) => {
-  const routerData = generateRoutesFromMenu(dynamicMenuData)
-  return routerData.map((item: any) => (
-    <Route
-      key={item.key}
-      path={item.path}
-      element={item.element}
-    >
-      {item.children && item.children.length && DynamicRoutes(item.children)}
-    </Route>
-  ));
+  const routes = generateRoutesFromMenu(dynamicMenuData);
+  return routes;
 }
 
 export default DynamicRoutes
