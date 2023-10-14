@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, useRoutes } from 'react-router';
+import { Navigate } from 'react-router';
 import { IRouterType } from '@/config/router.type';
 const About = React.lazy(() => import('@/pages/about'));
 const Home = React.lazy(() => import('@/pages/home'));
@@ -7,9 +8,9 @@ const Home = React.lazy(() => import('@/pages/home'));
 // 静态路由在这里配置
 const staticRouter: IRouterType[] = [
   {
-    path: '/',
+    path: '/*',
     key: 'home',
-    element: <Home />
+    element: <Navigate to="/home" replace={true} />
   },
   {
     path: '/home',

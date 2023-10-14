@@ -15,7 +15,7 @@ const generateRoutesFromMenu = (menuData: IMenuType[]) => {
       element = <Ele />
     } else {
       // 匹配不到重定向问题
-      element = <Navigate to='/' replace={true} />
+      element = <Navigate to='/home' replace={true} />
     }
 
     const route = (
