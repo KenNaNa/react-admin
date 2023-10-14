@@ -86,7 +86,7 @@ request.interceptors.response.use(
 
     // 发起重新请求
     const { config } = error;
-    if (retryCount < globalConfigs.axios.retryCount) {
+    if (retryCount < globalConfigs.retryCount) {
       // 如果重试次数小于3，重试请求
       retryCount++;
       return new Promise((resolve) => {

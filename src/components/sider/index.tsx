@@ -61,11 +61,15 @@ const getMenuList = (menuList: any[]) => {
 
 const DynamicMenu = ({ menuData }: any) => {
   // 获取页面加载 path
-  const path = useLocation().pathname === '/' ? menuData[0].path : useLocation().pathname
+  let path = useLocation().pathname
+  console.log('path===>', path)
+  
+  const { openKeys, tempMenuList } = getMenuList(menuData)
+  // 兼容手动输入路径，刷新之后匹配不到菜单问题
+  path = openKeys.includes(path) ? path : openKeys[0] || '/home'
   // 设置默认菜单打开
   const [tempPath, setTempPath] = useState(path)
-  const { openKeys, tempMenuList } = getMenuList(menuData)
-  const onClick: MenuProps['onClick'] = (e) => {
+  const onClick: MenuProps['onClick'] = (e: any) => {
     setTempPath(e.key)
   }
 
