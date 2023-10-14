@@ -2,7 +2,7 @@
 const globalConfigs = {
     title: 'react-antd-admin',
     isShowLogo: false,
-    redirectPath: '/home',
+    redirectHmoePath: '/home',
     retryCount: 3
 }
 

@@ -5,6 +5,7 @@ import { ItemType } from "antd/es/menu/hooks/useItems";
 import IconFont from "../icon";
 import { NavLink as Link, useLocation } from 'react-router-dom';
 import staticMenu from "@/config/static.menu";
+import globalConfigs from "@/config/global";
 type MenuItem = Required<MenuProps>['items'][number];
 
 /**
@@ -66,7 +67,7 @@ const DynamicMenu = ({ menuData }: any) => {
   
   const { openKeys, tempMenuList } = getMenuList(menuData)
   // 兼容手动输入路径，刷新之后匹配不到菜单问题
-  path = openKeys.includes(path) ? path : openKeys[0] || '/home'
+  path = openKeys.includes(path) ? path : openKeys[0] || globalConfigs.redirectHmoePath
   // 设置默认菜单打开
   const [tempPath, setTempPath] = useState(path)
   const onClick: MenuProps['onClick'] = (e: any) => {
