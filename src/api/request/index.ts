@@ -2,6 +2,7 @@ import { message } from 'antd';
 import axios from 'axios';
 import { EErrorCode } from './code';
 import { getItem, removeItem } from '@/utils/storage';
+import globalConfigs from '@/config/global';
 const request = axios.create({
   baseURL: '/api', // 替换为你的API基本URL
   timeout: 5000, // 请求超时时间（毫秒）
@@ -21,6 +22,7 @@ request.interceptors.request.use(
 );
 
 // 响应拦截器
+let retryCount = 1; // 用于跟踪重试次数
 request.interceptors.response.use(
   (response) => {
     // 在这里对响应数据进行处理
@@ -82,8 +84,39 @@ request.interceptors.response.use(
       console.error('Error', error.message);
     }
 
+    // 发起重新请求
+    const { config } = error;
+    if (retryCount < globalConfigs.axios.retryCount) {
+      // 如果重试次数小于3，重试请求
+      retryCount++;
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(request(config));
+        }, 1000); // 延迟1秒后重试
+      });
+    }
+
     return Promise.reject(error);
   }
 );
+
+// 多个请求同时进行，有前后顺序
+const sendRequestsSequentially = async (requests: any[]) => {
+  const responses = [];
+  for (const request of requests) {
+    try {
+      const response = await request(request);
+      responses.push(response.data);
+    } catch (error) {
+      return error;
+    }
+  }
+
+  return responses;
+}
+
+export {
+  sendRequestsSequentially
+}
 
 export default request;
