@@ -7,16 +7,14 @@ import { getMenu } from '@/api/module/user/menu';
 import Loading from './components/loading';
 import { getItem } from './utils/storage';
 import { useNavigate, useLocation } from 'react-router';
+import useStore from './store';
 export default function App() {
-  const [dynamicMenuData, setDynamicMenuData] = useState([])
+  const { menuStore } = useStore()
   const navigate = useNavigate()
   const { pathname } = useLocation()
-
+  const tempData = getItem('menuData') || `[]`
+  const menuData = menuStore.menuData.length ? menuStore.menuData : JSON.parse(tempData)
   useEffect(() => {
-    getMenu().then(res => {
-      setDynamicMenuData(res.data as any[])
-    })
-
     // 判断登录跳转
     const isToken = getItem('token')
     if (!isToken && (pathname !== '/login' && pathname !== '/register')) {
@@ -25,6 +23,6 @@ export default function App() {
   }, [])
 
   return (
-    dynamicMenuData && dynamicMenuData.length ? <Auth children={<MainApp dynamicMenuData={dynamicMenuData} />} /> : <Loading />
+    <Auth children={<MainApp dynamicMenuData={menuData} />} />
   )
 }
