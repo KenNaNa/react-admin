@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import { IGoLoginParams, toLogin, toLogout } from '@/api/module/user/login'
 import { setItem, getItem, removeItem } from '@/utils/storage'
-
+import menuStore from './menu.store'
 class LoginStore {
     token = getItem('token') || ''
     isLogin = Boolean(getItem('isLogin')) || false
@@ -26,6 +26,8 @@ class LoginStore {
             this.isLogin = res.data.isLogin
             this.token = res.data.token
             this.username = res.data.username
+
+            menuStore.getMenuData()
         })
     }
 

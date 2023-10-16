@@ -12,7 +12,7 @@ const setItem = (key: string, val: string) =>{
  * @param {string} key 缓存的 key
  **/
 const getItem = (key: string)=>{
-  return window.localStorage.getItem(key)
+  return window.localStorage.getItem(key) || ''
 }
 
 /**
