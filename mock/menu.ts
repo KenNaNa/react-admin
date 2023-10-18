@@ -63,7 +63,7 @@ Mock.mock('/api/menu', 'get', () => {
                         },
                         children: [
                             {
-                                key: 'salesList',
+                                key: 'list',
                                 path: '/company/sales/list',
                                 component: '/company/sales/list',
                                 meta: {
@@ -72,7 +72,7 @@ Mock.mock('/api/menu', 'get', () => {
                                 }
                             },
                             {
-                                key: 'salesAdd',
+                                key: 'add',
                                 path: '/company/sales/add',
                                 component: '/company/sales/add',
                                 meta: {
