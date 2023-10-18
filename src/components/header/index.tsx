@@ -6,6 +6,7 @@ import './index.less'
 import useStore from '@/store';
 import { getItem, removeItem } from '@/utils/storage';
 import { useNavigate } from 'react-router';
+import CustomBreadcrumb from '../breadcrumbs';
 
 export default function TopHeader({ colorBgContainer, collapsed, setCollapsed }: any) {
     const { loginStore } = useStore()
@@ -24,16 +25,20 @@ export default function TopHeader({ colorBgContainer, collapsed, setCollapsed }:
     }
     return (
         <Header style={{ padding: 0, background: colorBgContainer, display: 'flex', justifyContent: 'space-between' }}>
-            <Button
-                type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                    fontSize: '16px',
-                    width: 64,
-                    height: 64,
-                }}
-            />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Button
+                    type="text"
+                    icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                    onClick={() => setCollapsed(!collapsed)}
+                    style={{
+                        fontSize: '16px',
+                        width: 64,
+                        height: 64,
+                    }}
+                />
+
+                <CustomBreadcrumb />
+            </div>
 
             <div className="user-info">
                 <span className="user-name">{username}</span>

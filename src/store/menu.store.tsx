@@ -1,9 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 import { getMenu } from '@/api/module/user/menu'
 import { IMenuType } from '@/config/menu.type'
-import { setItem } from '@/utils/storage'
+import { getItem, setItem } from '@/utils/storage'
 class MenuStore {
-    menuData: IMenuType[] = []
+    menuData: IMenuType[] = getItem('menuData') ? JSON.parse(getItem('menuData')) : []
 
     constructor() {
         makeAutoObservable(this)
