@@ -31,13 +31,13 @@ const CustomBreadcrumb = () => {
     return (
         <Breadcrumb>
             {breadcrumbs.map((item: any, index: number) => (
-                <Breadcrumb.Separator key={index}>
+                <Breadcrumb.Item key={index}>
                     {index === breadcrumbs.length - 1 ? (
                         item.meta.title
                     ) : (
                         <Link to={item.path}>{item.meta.title}</Link>
                     )}
-                </Breadcrumb.Separator>
+                </Breadcrumb.Item>
             ))}
         </Breadcrumb>
     );
