@@ -3,8 +3,6 @@ import './app.less';
 import './assets/style/reset.less';
 import MainApp from './components/layout';
 import Auth from './components/auth';
-import { getMenu } from '@/api/module/user/menu';
-import Loading from './components/loading';
 import { getItem } from './utils/storage';
 import { useNavigate, useLocation } from 'react-router';
 import useStore from './store';
